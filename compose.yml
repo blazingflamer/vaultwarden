@@ -6,6 +6,7 @@ services:
     environment:
       DOMAIN: "https://vw.anzensolutions.com"
       SIGNUPS_ALLOWED: "false"
+      WEBSOCKET_ENABLED: "true"
       # ADMIN_TOKEN: ${VAULTWARDEN_ADMIN_TOKEN}
       # SMTP_HOST: smtp.domain.tld 
       # SMTP_FROM: vaultwarden@domain.tld 
