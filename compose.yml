@@ -16,8 +16,8 @@ services:
       # SMTP_PASSWORD: MyPassw0rd
     volumes:
       - /home/steven/vaultwarden/:/data/
-    ports:
-      - 8960:80
+    # ports:
+    #   - 8960:80
     networks:
       - traefik
     labels:
