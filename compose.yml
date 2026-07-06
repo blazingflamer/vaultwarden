@@ -6,7 +6,7 @@ services:
     environment:
       DOMAIN: "https://vw.anzensolutions.com"
       SIGNUPS_ALLOWED: "false"
-      WEBSOCKET_ENABLED: "true"
+      # WEBSOCKET_ENABLED: "true"
       # ADMIN_TOKEN: ${VAULTWARDEN_ADMIN_TOKEN}
       # SMTP_HOST: smtp.domain.tld 
       # SMTP_FROM: vaultwarden@domain.tld 
@@ -27,13 +27,8 @@ services:
       - "traefik.http.routers.vaultwarden.rule=Host(`vw.anzensolutions.com`)"
       - "traefik.http.routers.vaultwarden.entrypoints=websecure"
       - "traefik.http.routers.vaultwarden.tls.certresolver=cloudflare"
+      - "traefik.http.routers.vaultwarden.tls=true"
       - "traefik.http.services.vaultwarden.loadbalancer.server.port=80"
-      # websocket
-      - "traefik.http.routers.vaultwarden-ws.entrypoints=websecure"
-      - "traefik.http.routers.vaultwarden-ws.rule=Host(`vw.anzensolutions.com`) && Path(`/notifications/hub`)"
-      - "traefik.http.middlewares.vaultwarden-ws=bw-stripPrefix@file"
-      - "traefik.http.routers.vaultwarden-ws.service=vaultwarden-websocket"
-      - "traefik.http.services.vaultwarden-websocket.loadbalancer.server.port=3012"
       # Required headers for SharedArrayBuffer (LibreOffice WASM)
       # - "traefik.http.routers.vaultwarden.middlewares=vaultwarden-headers"
       # - "traefik.http.middlewares.vaultwarden-headers.headers.customresponseheaders.Cross-Origin-Opener-Policy=same-origin"
