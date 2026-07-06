@@ -22,6 +22,7 @@ services:
       - traefik
     labels:
       - "traefik.enable=true"
+      - "traefik.docker.network=traefik"
       # Entry Point for https
       - "traefik.http.routers.vaultwarden.rule=Host(`vw.anzensolutions.com`)"
       - "traefik.http.routers.vaultwarden.entrypoints=websecure"
